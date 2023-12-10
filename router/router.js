@@ -16,7 +16,7 @@ routerr.get("/getmessage/:id", authController.getMessage)
 
 routerr.post("/uploadfile", upload.single("file") ,authController.uploadFile)
 routerr.get("/file/:filename",authController.getFiles)
-routerr.get("/updatecontact/:userId",authController.updateContacts)
+routerr.post("/updatecontact/:userId",authController.updateContacts)
 
 
 
