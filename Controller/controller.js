@@ -125,5 +125,28 @@ getFiles : async (req, res)=>{
   }
 },
 
+updateContacts: async (req, res) => {
+    const { userId } = req.params;
+    const { contacts } = req.body;
+
+    try {
+        const user = await userModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+        }
+
+        user.contacts = contacts;
+        await user.save();
+
+        res.status(200).json(user);
+
+    } catch (err) {
+        return res.status(500).json(err);
+    }
+},
+
+
+    
 }
 module.exports = authController
