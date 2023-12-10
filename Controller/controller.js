@@ -28,7 +28,11 @@ addUser : async (req, res)=>{
     return
    }
    
-   const newUser = new userModel(req.body)
+   // const newUser = new userModel(req.body)
+        const newUser = new userModel({
+            ...req.body,
+            contacts: [] // You can initialize it with an empty array
+        });   
    await newUser.save()
    res.status(200).json(newUser)
 
